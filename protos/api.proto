@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package mbier.example;
+
+import "google/protobuf/empty.proto";
+import "person.proto";
+
+option go_package = "./example";
+
+service PersonService {
+  rpc Save(SaveRequest) returns (SaveResponse) {}
+  rpc List(ListRequest) returns (ListResponse) {}
+}
+
+message SaveRequest {
+  Person person = 1;
+}
+
+message SaveResponse {
+  google.protobuf.Empty empty = 1;
+}
+
+message ListRequest {
+  google.protobuf.Empty empty = 1;
+}
+
+message ListResponse {
+  repeated Person person = 1;
+}
